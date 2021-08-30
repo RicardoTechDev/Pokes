@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% load static %}
+
+{% endblock %}
+
+{% block titulo %}Home{% endblock %}
+
+
+{% block content %} 
+    <div class="row px-2 py-2 bg-light rounded-2 shadow-lg">
+        <div class="col">
+            <div class="col py-3 bg-light d-flex justify-content-center align-items-center flex-column w-100">
+                <!-- REGISTRO -->
+                <h2 class="fw-bold text-center py-3">Actualizar Perfil</h2>
+                <form class="w-75" action="{% url 'editar_perfil' user.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="firstname" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label">Alias</label>
+                        <input type="text" class="form-control" id="user_name" name="alias" value="{{ user.alias }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" value="{{ user.email }}">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                </form>
+            </div>
+            <div class="col-1">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %} 
